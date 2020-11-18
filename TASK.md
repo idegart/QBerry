@@ -44,7 +44,7 @@ air_date date Дата выхода
 id int  
 name string Имя  
 birthday date Дата рождения  
-occupations json Профессии/умения  
+occupations json (array) Профессии/умения  
 img string Фото  
 nickname string Известен как (кличка)  
 portrayed string Актер, сыгравший персонажа  
