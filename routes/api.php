@@ -1,19 +1,17 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CharacterController;
+use App\Http\Controllers\EpisodeController;
+use App\Http\Controllers\QuoteController;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
+Route::apiResource('episodes', EpisodeController::class)->only('index', 'show');
+Route::apiResource('characters', CharacterController::class)->only('index');
+Route::apiResource('quotes', QuoteController::class)->only('index');
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::prefix('characters')->group(function () {
+    Route::get('random', [CharacterController::class, 'random'])->name('characters.random');
+});
+
+Route::prefix('quotes')->group(function () {
+    Route::get('random', [QuoteController::class, 'random'])->name('quotes.random');
 });
