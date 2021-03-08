@@ -16,6 +16,13 @@ class CharacterController extends Controller
         $this->characterRepository = $characterRepository;
     }
 
+    /**
+     * Get list of characters
+     *
+     * @param IndexRequest $request
+     * @param Responder $responder
+     * @return ResponseBuilder
+     */
     public function index(IndexRequest $request, Responder $responder): ResponseBuilder
     {
         return $responder->success(
@@ -23,6 +30,12 @@ class CharacterController extends Controller
         );
     }
 
+    /**
+     * Get random character
+     *
+     * @param Responder $responder
+     * @return ResponseBuilder
+     */
     public function random(Responder $responder): ResponseBuilder
     {
         return $responder->success(

@@ -12,6 +12,14 @@ use Illuminate\Validation\ValidationException;
 
 class AuthenticateController
 {
+    /**
+     * Get user token
+     *
+     * @param LoginRequest $request
+     * @param Responder $responder
+     * @return ResponseBuilder
+     * @throws ValidationException
+     */
     public function login(LoginRequest $request, Responder $responder): ResponseBuilder
     {
         $user = User::query()->where('email', '=', $request->input('email'))->first();
@@ -27,6 +35,13 @@ class AuthenticateController
         ]);
     }
 
+    /**
+     * Register and get user token
+     *
+     * @param RegisterRequest $request
+     * @param Responder $responder
+     * @return ResponseBuilder
+     */
     public function register(RegisterRequest $request, Responder $responder): ResponseBuilder
     {
         /** @var User $user */

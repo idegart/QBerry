@@ -17,11 +17,24 @@ class QuoteController extends Controller
         $this->quoteRepository = $quoteRepository;
     }
 
+    /**
+     * Get list of quotes
+     *
+     * @param Responder $responder
+     * @return ResponseBuilder
+     */
     public function index(Responder $responder): ResponseBuilder
     {
         return $responder->success(Quote::query()->paginate());
     }
 
+    /**
+     * Get random quote
+     *
+     * @param RandomRequest $request
+     * @param Responder $responder
+     * @return ResponseBuilder
+     */
     public function random(RandomRequest $request, Responder $responder): ResponseBuilder
     {
         return $responder->success(

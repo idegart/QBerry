@@ -9,6 +9,13 @@ use Illuminate\Http\Request;
 
 class StatController extends Controller
 {
+    /**
+     * Get total requests count
+     *
+     * @param Responder $responder
+     * @param StatService $statService
+     * @return ResponseBuilder
+     */
     public function all(Responder $responder, StatService $statService): ResponseBuilder
     {
         return $responder->success([
@@ -16,6 +23,14 @@ class StatController extends Controller
         ]);
     }
 
+    /**
+     * Get current user requests count
+     *
+     * @param Request $request
+     * @param Responder $responder
+     * @param StatService $statService
+     * @return ResponseBuilder
+     */
     public function my(Request $request, Responder $responder, StatService $statService): ResponseBuilder
     {
         return $responder->success([
