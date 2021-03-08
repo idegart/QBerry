@@ -15,6 +15,8 @@ class EpisodeTest extends TestCase
    /** @test **/
    public function can_get_all_episodes(): void
    {
+       $this->login();
+
        $this->seed();
 
        $this->getJson(route('episodes.index'))
@@ -33,6 +35,8 @@ class EpisodeTest extends TestCase
    /** @test **/
    public function can_get_one_episode_by_id(): void
    {
+       $this->login();
+
        $episode = Episode::factory()->create();
 
        $this->getJson(route('episodes.show', $episode))

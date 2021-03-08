@@ -15,6 +15,8 @@ class CharacterTest extends TestCase
     /** @test **/
     public function can_get_all_characters(): void
     {
+        $this->login();
+
         $this->seed();
 
         $this->getJson(route('characters.index'))
@@ -29,6 +31,8 @@ class CharacterTest extends TestCase
     /** @test **/
     public function can_find_character_by_name(): void
     {
+        $this->login();
+
         $character = Character::factory()->create();
 
         $this->getJson(route('characters.index', [
@@ -47,6 +51,8 @@ class CharacterTest extends TestCase
     /** @test **/
     public function can_get_random_character(): void
     {
+        $this->login();
+
         $character = Character::factory()->create();
 
         $this->getJson(route('characters.random'))

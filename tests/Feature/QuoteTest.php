@@ -15,6 +15,8 @@ class QuoteTest extends TestCase
     /** @test **/
     public function can_get_all_quotes(): void
     {
+        $this->login();
+
         $this->seed();
 
         $this->getJson(route('quotes.index'))
@@ -33,6 +35,8 @@ class QuoteTest extends TestCase
     /** @test **/
     public function can_get_random_quote(): void
     {
+        $this->login();
+
         $quote = Quote::factory()->create();
 
         $this->getJson(route('quotes.random', [
